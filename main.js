@@ -37,19 +37,21 @@ const Pizzas = [
 ]
 
 // Punto A
-const idImpar = Pizzas.filter((pizza) => {
-    if (pizza.id % 2 !== 0){
-        console.log(`la pizza ${pizza.nombre} tiene un ID impar`)
-    }
-})
+const idImpar = Pizzas.filter((pizza) => pizza.id % 2 !== 0);
+idImpar.forEach((pizza) => console.log(`La ${pizza.nombre} tiene un id impar`))
+    
 
 console.log('')
 //Punto B
-const pizzaMenosDe600 = Pizzas.some((pizza) =>{
-    if(pizza.precio < 600){
-        console.log(`Hay 1 o más pizzas que valen menos de 600`)
+const pizzaMenosDe600 = (pizza) => pizza.precio < 600;
+if (Pizzas.some(pizzaMenosDe600)){
+    console.log("Hay pizzas con precio menor a $600")
+}
+    else {
+        (
+            console.log("No hay pizzas con precio menor a $600")
+        )
     }
-})
 
 console.log('')
 //Punto C
@@ -61,5 +63,6 @@ console.log('')
 //Punto D
 
 const ingredientesDePizzas = Pizzas.forEach((pizza) => {
-    console.log(`La ${pizza.nombre} tiene los siguientes ingredientes: ${pizza.ingredientes}`)
+    console.log(`La ${pizza.nombre} tiene los siguientes ingredientes:`)
+    pizza.ingredientes.forEach((ingrediente) => console.log(ingrediente))
 })
